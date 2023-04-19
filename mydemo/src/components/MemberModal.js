@@ -27,7 +27,7 @@ const MemberModal = ({ isMemberModalOpen, memberDetail, closeMemberModal }) => {
 
 const Wrapper = styled.div`
     display: none;
-    background-color: var(--grey-300);
+    background-color: var(--white);
     position: fixed;
     top: 0;
     left: 50%;
@@ -37,11 +37,19 @@ const Wrapper = styled.div`
     width: 400px;
     border-radius: var(--borderRadius);
     padding: 1.5rem 0;
+    z-index: 3;
     &.show-member {
         display: block;
     }
     h5,p {
         margin: 0;
+    }
+    h5 {
+        margin-bottom: 1rem;
+    }
+    span {
+        color: var(--primary-500);
+        margin-left: 6px;
     }
 `;
 

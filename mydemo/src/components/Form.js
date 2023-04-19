@@ -10,7 +10,6 @@ const Form = ({ isEditing }) => {
     addMember,
     editMember,
     editID,
-    activeMember 
   } = useFamilyContext()
 
   const handleClick = () => {

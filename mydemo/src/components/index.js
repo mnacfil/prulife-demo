@@ -5,6 +5,7 @@ import Form from "./Form";
 import FamilyMembers from "./FamilyMembers";
 import Member from "./Member";
 import MemberModal from "./MemberModal";
+import BlackoutScreen from "./BlackoutScreen";
 
 export { 
     MemberForm,
@@ -13,5 +14,6 @@ export {
     Form,
     FamilyMembers,
     Member,
-    MemberModal 
+    MemberModal,
+    BlackoutScreen 
 }

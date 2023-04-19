@@ -19,6 +19,7 @@ const Wrapper = styled.section`
     top: 50%;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 10;
 
     &.show-form {
         display: block;

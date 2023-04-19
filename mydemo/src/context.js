@@ -17,19 +17,26 @@ export const FamilyProvider = ({ children }) => {
     const [ isMemberModalOpen, setIsMemberModalOpen] = useState(false);
     const [ isEditing, setIsEditing ] = useState(false);
     const [ editID, setEditID ] = useState(null);
+    const [ isBlackout, setIsBlackout ] = useState(false);
+
+    console.log(familyMembers);
 
     const openMemberModalForm = () => {
         setIsMemberModalFormOpen(true);
+        setIsBlackout(true);
     }
     const closeMemberModalForm = () => {
         setIsMemberModalFormOpen(false);
         setMember(defaultState);
+        setIsBlackout(false)
     }
     const openMemberModal = () => {
         setIsMemberModalOpen(true);
+        setIsBlackout(true);
     }
     const closeMemberModal = () => {
         setIsMemberModalOpen(false);
+        setIsBlackout(false)
     }
 
     const handleInput = (e) => {
@@ -88,6 +95,8 @@ export const FamilyProvider = ({ children }) => {
             });
         });
         setMember(defaultState);
+        setIsEditing(false);
+        setEditID(null);
         closeMemberModalForm();
     }
 
@@ -110,7 +119,8 @@ export const FamilyProvider = ({ children }) => {
                 familyMembers,
                 isMemberModalOpen,
                 isEditing,
-                editID
+                editID,
+                isBlackout
             }}
         >
             {children}

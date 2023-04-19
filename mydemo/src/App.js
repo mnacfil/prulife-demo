@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MemberForm, FamilyMembers } from './components'
+import { MemberForm, FamilyMembers, BlackoutScreen } from './components'
 import { useFamilyContext } from './context';
 
 function App() {
@@ -7,7 +7,8 @@ function App() {
     openMemberModalForm, 
     closeMemberModalForm,
     isMemberModalFormOpen,
-    isEditing
+    isEditing,
+    isBlackout
   } = useFamilyContext();
 
   return (
@@ -29,6 +30,7 @@ function App() {
         closeMemberModalForm={closeMemberModalForm}
         isEditing={isEditing}
       />
+      { isBlackout && <BlackoutScreen /> }
     </Wrapper>
   );
 }
