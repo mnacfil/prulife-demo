@@ -4,6 +4,7 @@ import CloseBtn from "./CloseBtn";
 import Form from "./Form";
 import FamilyMembers from "./FamilyMembers";
 import Member from "./Member";
+import MemberModal from "./MemberModal";
 
 export { 
     CreateMemberForm,
@@ -11,5 +12,6 @@ export {
     CloseBtn,
     Form,
     FamilyMembers,
-    Member 
+    Member,
+    MemberModal 
 }

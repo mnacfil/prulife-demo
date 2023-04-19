@@ -13,6 +13,8 @@ export const FamilyProvider = ({ children }) => {
     const [ isCreateMemberModalOpen, setIsCreateMemberModalOpen] = useState(false);
     const [ familyMembers, setFamilyMembers ] = useState([]);
     const [ member, setMember ] = useState(defaultState);
+    const [ activeMember, setActiveMember ] = useState(null);
+    const [ isMemberModalOpen, setIsMemberModalOpen] = useState(false);
 
     const openCreateModalForm = () => {
         setIsCreateMemberModalOpen(true);
@@ -20,6 +22,12 @@ export const FamilyProvider = ({ children }) => {
     const closeCreateModalForm = () => {
         setIsCreateMemberModalOpen(false);
         setMember(defaultState);
+    }
+    const openMemberModal = () => {
+        setIsMemberModalOpen(true);
+    }
+    const closeMemberModal = () => {
+        setIsMemberModalOpen(false);
     }
 
     const handleInput = (e) => {
@@ -45,7 +53,7 @@ export const FamilyProvider = ({ children }) => {
         setMember(defaultState);
         closeCreateModalForm()
     }
-    console.log(familyMembers);
+
     return (
         <FamilyContext.Provider
             value={{
@@ -54,8 +62,13 @@ export const FamilyProvider = ({ children }) => {
                 closeCreateModalForm,
                 handleInput,
                 addMember,
+                setActiveMember,
+                openMemberModal,
+                closeMemberModal,
+                activeMember,
                 member,
-                familyMembers
+                familyMembers,
+                isMemberModalOpen
             }}
         >
             {children}
