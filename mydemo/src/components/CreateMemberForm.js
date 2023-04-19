@@ -7,7 +7,7 @@ const CreateMemberForm = ({ isCreateMemberModalOpen, closeCreateModalForm }) => 
         <Wrapper className={isCreateMemberModalOpen ? 'show-form': ''}>
             <div className="member-container">
                 <CloseBtn closeHandler={closeCreateModalForm}/>
-                <Form />
+                <Form type='Add'/>
             </div>
         </Wrapper>
     )
@@ -15,6 +15,11 @@ const CreateMemberForm = ({ isCreateMemberModalOpen, closeCreateModalForm }) => 
 
 const Wrapper = styled.section`
     display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+
     &.show-form {
         display: block;
     }

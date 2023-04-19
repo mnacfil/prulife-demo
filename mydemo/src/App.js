@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { CreateMemberForm } from './components'
+import { CreateMemberForm, FamilyMembers } from './components'
 import { useFamilyContext } from './context';
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
           add member
         </button>
       </div>
+      <FamilyMembers />
       <CreateMemberForm  
         isCreateMemberModalOpen={isCreateMemberModalOpen}
         closeCreateModalForm={closeCreateModalForm}
@@ -33,8 +34,11 @@ function App() {
 const Wrapper = styled.main`
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin-top: 5rem;
   text-align: center;
+  position: relative;
 `;
 
 export default App;
