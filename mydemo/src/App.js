@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-import { CreateMemberForm, FamilyMembers } from './components'
+import { MemberForm, FamilyMembers } from './components'
 import { useFamilyContext } from './context';
 
 function App() {
   const {
-    openCreateModalForm, 
-    isCreateMemberModalOpen,
-    closeCreateModalForm
+    openMemberModalForm, 
+    closeMemberModalForm,
+    isMemberModalFormOpen,
+    isEditing
   } = useFamilyContext();
 
   return (
@@ -17,15 +18,16 @@ function App() {
         </header>
         <button 
           className='btn add-btn'
-          onClick={openCreateModalForm}
+          onClick={openMemberModalForm}
           >
           add member
         </button>
       </div>
       <FamilyMembers />
-      <CreateMemberForm  
-        isCreateMemberModalOpen={isCreateMemberModalOpen}
-        closeCreateModalForm={closeCreateModalForm}
+      <MemberForm  
+        isMemberModalFormOpen={isMemberModalFormOpen}
+        closeMemberModalForm={closeMemberModalForm}
+        isEditing={isEditing}
       />
     </Wrapper>
   );

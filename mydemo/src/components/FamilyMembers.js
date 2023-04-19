@@ -10,7 +10,9 @@ const FamilyMembers = () => {
         isMemberModalOpen,
         activeMember,
         openMemberModal,
-        closeMemberModal 
+        closeMemberModal,
+        removeMember,
+        setEditMember 
     } = useFamilyContext();
     return <>
         <Wrapper>
@@ -23,6 +25,8 @@ const FamilyMembers = () => {
                                 key={index}
                                 setActiveMember={setActiveMember}
                                 openMemberModal={openMemberModal}
+                                removeMember={removeMember}
+                                setEditMember={setEditMember}
                             />
                         )
                     })

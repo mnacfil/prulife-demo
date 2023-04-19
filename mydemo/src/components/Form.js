@@ -3,15 +3,27 @@ import { FormInput } from '../components';
 import styled from 'styled-components';
 import { useFamilyContext } from '../context';
 
-const Form = ({ type }) => {
+const Form = ({ isEditing }) => {
   const {
     member: { firstName, lastName, age, relationship }, 
     handleInput,
-    addMember 
+    addMember,
+    editMember,
+    editID,
+    activeMember 
   } = useFamilyContext()
+
+  const handleClick = () => {
+    if(!isEditing) {
+      addMember();
+      return
+    }
+    editMember(editID);
+  }
+
   return (
     <StyleForm className='form' onSubmit={(e) => e.preventDefault()}>
-        <h3>{type} Member</h3>
+        <h3>{isEditing? 'Edit' : 'Add'} Member</h3>
         <FormInput 
           type='text'
           name="firstName"
@@ -42,9 +54,9 @@ const Form = ({ type }) => {
         />
         <button 
           className='btn btn-block'
-          onClick={addMember}
+          onClick={handleClick}
           >
-            Add
+            {isEditing ? 'Save': 'Add'}
           </button>
     </StyleForm>
   )

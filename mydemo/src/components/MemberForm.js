@@ -1,13 +1,13 @@
 import React from 'react';
-import {CloseBtn, Form } from '../components';
+import {CloseBtn, Form } from '.';
 import styled from 'styled-components';
 
-const CreateMemberForm = ({ isCreateMemberModalOpen, closeCreateModalForm }) => {
+const CreateMemberForm = ({ isMemberModalFormOpen, closeMemberModalForm, isEditing }) => {
     return (
-        <Wrapper className={isCreateMemberModalOpen ? 'show-form': ''}>
+        <Wrapper className={isMemberModalFormOpen ? 'show-form': ''}>
             <div className="member-container">
-                <CloseBtn closeHandler={closeCreateModalForm}/>
-                <Form type='Add'/>
+                <CloseBtn closeHandler={closeMemberModalForm}/>
+                <Form isEditing={isEditing}/>
             </div>
         </Wrapper>
     )

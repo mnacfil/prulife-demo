@@ -3,21 +3,37 @@ import styled from 'styled-components';
 import {AiOutlineEdit, AiOutlineDelete} from 'react-icons/ai';
 
 const Member = ({ 
-  id, firstName, lastName, age, relationship, setActiveMember, openMemberModal
+  id, 
+  firstName, 
+  lastName, 
+  age, 
+  relationship, 
+  setActiveMember, 
+  openMemberModal, 
+  removeMember,
+  setEditMember
 }) => {
+
   const handleClick = () => {
     setActiveMember({firstName, lastName, age, relationship});
     openMemberModal();
   }
+
   return (
-    <Wrapper title='view detail' onClick={handleClick}>
+    <Wrapper title='view detail'>
         <div className="member-container">
-            <h4>{relationship}</h4>
+            <h4 onClick={handleClick}>{relationship}</h4>
             <div className="controllers">
-              <button className='edit-btn'>
+              <button 
+                className='edit-btn'
+                onClick={() => setEditMember(id)}
+              >
                 <AiOutlineEdit />
               </button>
-              <button className='delete-btn'>
+              <button 
+                className='delete-btn'
+                onClick={() => removeMember(id)}
+                >
                 <AiOutlineDelete />
               </button>
             </div>

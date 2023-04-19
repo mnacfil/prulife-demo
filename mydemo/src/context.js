@@ -10,17 +10,19 @@ const defaultState = {
 }
 
 export const FamilyProvider = ({ children }) => {
-    const [ isCreateMemberModalOpen, setIsCreateMemberModalOpen] = useState(false);
+    const [ isMemberModalFormOpen, setIsMemberModalFormOpen] = useState(false);
     const [ familyMembers, setFamilyMembers ] = useState([]);
     const [ member, setMember ] = useState(defaultState);
     const [ activeMember, setActiveMember ] = useState(null);
     const [ isMemberModalOpen, setIsMemberModalOpen] = useState(false);
+    const [ isEditing, setIsEditing ] = useState(false);
+    const [ editID, setEditID ] = useState(null);
 
-    const openCreateModalForm = () => {
-        setIsCreateMemberModalOpen(true);
+    const openMemberModalForm = () => {
+        setIsMemberModalFormOpen(true);
     }
-    const closeCreateModalForm = () => {
-        setIsCreateMemberModalOpen(false);
+    const closeMemberModalForm = () => {
+        setIsMemberModalFormOpen(false);
         setMember(defaultState);
     }
     const openMemberModal = () => {
@@ -51,24 +53,64 @@ export const FamilyProvider = ({ children }) => {
         }
         setFamilyMembers(prevMembers => [...prevMembers, user]);
         setMember(defaultState);
-        closeCreateModalForm()
+        closeMemberModalForm()
+    }
+
+    const removeMember = (id) => {
+        setFamilyMembers(prevMembers => {
+            return prevMembers.filter(familyMember => familyMember.id !== id);
+        })
+    }
+
+    const setEditMember = (id) => {
+        const memberToEdit = familyMembers.find(familyMember => familyMember.id === id);
+        setEditID(id);
+        setIsEditing(true);
+        console.log(member);
+        setMember({
+            firstName: memberToEdit.firstName,
+            lastName: memberToEdit.lastName,
+            age: memberToEdit.age,
+            relationship: memberToEdit.relationship
+        });
+        openMemberModalForm();
+    }
+    const editMember = (id) => {
+        setFamilyMembers(prevMembers => {
+            return prevMembers.map(familyMember => {
+                if(familyMember.id === id) {
+                    familyMember.firstName = member.firstName;
+                    familyMember.lastName = member.lastName;
+                    familyMember.age = member.age;
+                    familyMember.relationship = member.relationship;
+                }
+                return familyMember;
+            });
+        });
+        setMember(defaultState);
+        closeMemberModalForm();
     }
 
     return (
         <FamilyContext.Provider
             value={{
-                isCreateMemberModalOpen,
-                openCreateModalForm,
-                closeCreateModalForm,
+                openMemberModalForm,
+                closeMemberModalForm,
                 handleInput,
                 addMember,
                 setActiveMember,
                 openMemberModal,
                 closeMemberModal,
+                removeMember,
+                setEditMember,
+                editMember,
+                isMemberModalFormOpen,
                 activeMember,
                 member,
                 familyMembers,
-                isMemberModalOpen
+                isMemberModalOpen,
+                isEditing,
+                editID
             }}
         >
             {children}

@@ -1,4 +1,4 @@
-import CreateMemberForm from "./CreateMemberForm";
+import MemberForm from "./MemberForm";
 import FormInput from "./FormInput";
 import CloseBtn from "./CloseBtn";
 import Form from "./Form";
@@ -7,7 +7,7 @@ import Member from "./Member";
 import MemberModal from "./MemberModal";
 
 export { 
-    CreateMemberForm,
+    MemberForm,
     FormInput,
     CloseBtn,
     Form,
